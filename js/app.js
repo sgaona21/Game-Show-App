@@ -1,4 +1,5 @@
 console.log("app.js is linked successfully.");
+
 // Global Variables // 
 const qwertyKeyboard = document.getElementById('qwerty');
 const hiddenPhrase = document.getElementById('phrase');
@@ -17,3 +18,12 @@ const phrases = [
     'chicken fried rice',
     'stay hydrated'
 ]
+
+function getRandomPhraseAsArray(arr) {
+    //chooses a phrase at random
+    const randomNumber = Math.floor(Math.random() * arr.length);
+    const randomItem = arr[randomNumber];
+    return randomItem;
+}
+
+getRandomPhraseAsArray(phrases);
