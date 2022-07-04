@@ -20,10 +20,24 @@ const phrases = [
 ]
 
 function getRandomPhraseAsArray(arr) {
-    //chooses a phrase at random
+    //selects a phrase from an array at random
     const randomNumber = Math.floor(Math.random() * arr.length);
     const randomItem = arr[randomNumber];
     return randomItem;
 }
 
-getRandomPhraseAsArray(phrases);
+function addPhraseToDisplay(randomPhrase) {
+    //loops through each character in the phrase and assigns each character to a new list item
+    for (let i = 0; i < randomPhrase.length; i++) {
+        const phraseCharacter = randomPhrase[i];
+        
+        console.log(phraseCharacter);
+
+
+    }
+}
+
+
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray);
+
