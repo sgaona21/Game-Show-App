@@ -30,14 +30,20 @@ function addPhraseToDisplay(randomPhrase) {
     //loops through each character in the phrase and assigns each character to a new list item
     for (let i = 0; i < randomPhrase.length; i++) {
         const phraseCharacter = randomPhrase[i];
-        
-        console.log(phraseCharacter);
+        const newListItem = document.createElement('li');
+        newListItem.textContent = phraseCharacter;
+        const characterList = document.querySelector('ul');
+        characterList.append(newListItem);
 
-
+        if (newListItem === ' ') {
+            newListItem.className = 'space';
+        } else {
+            newListItem.className = 'letter'
+        }
     }
 }
 
-
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
+
 
