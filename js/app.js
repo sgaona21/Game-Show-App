@@ -46,7 +46,24 @@ function addPhraseToDisplay(randomPhrase) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
+function checkLetter(guess) {
+    //checks if given letter is present in the string and makes visible if there is a match
+    const checkLetter = document.querySelectorAll('li');
+    let match = null; 
+
+    for (i = 0; i < checkLetter.length; i++) {
+        const guessCheck = checkLetter[i];
+
+        if (guess === guessCheck.textContent) {
+            checkLetter[i].className = 'show';
+            match = guessCheck.textContent;
+        }
+    }
+    return match;
+}
 
 
+const testGuess = 'a';
+checkLetter(testGuess);
 
 
