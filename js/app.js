@@ -35,15 +35,18 @@ function addPhraseToDisplay(randomPhrase) {
         const characterList = document.querySelector('ul');
         characterList.append(newListItem);
 
-        if (newListItem === ' ') {
+        if (newListItem.textContent === ' ') {
             newListItem.className = 'space';
         } else {
-            newListItem.className = 'letter'
+            newListItem.className = 'letter';
         }
     }
 }
 
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
+
+
+
 
 
