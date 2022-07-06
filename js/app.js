@@ -55,7 +55,7 @@ function checkLetter(guess) {
         const guessCheck = checkLetter[i];
 
         if (guess === guessCheck.textContent) {
-            checkLetter[i].className = 'show';
+            checkLetter[i].className = 'show letter';
             match = guessCheck.textContent;
         }
     }
