@@ -7,6 +7,7 @@ let missed = 0;
 const startGameButton = document.getElementsByClassName('btn__reset')[0];
 const overlay = document.getElementById('overlay');
 
+
 startGameButton.addEventListener('click', () => {
     overlay.style.display = 'none';
 })
@@ -62,24 +63,50 @@ function checkLetter(guess) {
     return match;
 }
 
-qwertyKeyboard.addEventListener('click', () => {
+
+
+
+const qwertyKeyboardButtons = document.querySelectorAll('button');
+for (i = 0; i < qwertyKeyboardButtons.length; i++){
+qwertyKeyboardButtons[i].addEventListener('click', () => {
     const clickedButton = event.target;
     clickedButton.className = 'chosen';
     const letterFound = checkLetter(clickedButton.textContent);
+    clickedButton.disabled = true;
     console.log(letterFound);
 
     if (letterFound === null) {
         missed = missed + 1; 
-        const firstHeart = document.querySelector('ol li:first-child');
-        firstHeart.remove();
         console.log(missed);
    }
+   if (missed === 1) {
+    const firstHeart = document.querySelector('ol li:first-child');
+    firstHeart.innerHTML = '<img src="images/lostHeart.png" height="35px" width="30px"></img>';
+   } 
+   if (missed === 2 ) {
+        const secondHeart = document.getElementsByClassName('tries')[1];
+        secondHeart.innerHTML = '<img src="images/lostHeart.png" height="35px" width="30px"></img>';
+   }
+   if (missed === 3 ) {
+    const secondHeart = document.getElementsByClassName('tries')[2];
+    secondHeart.innerHTML = '<img src="images/lostHeart.png" height="35px" width="30px"></img>';
+}
+if (missed === 4 ) {
+    const secondHeart = document.getElementsByClassName('tries')[3];
+    secondHeart.innerHTML = '<img src="images/lostHeart.png" height="35px" width="30px"></img>';
+}
+
    checkWin();
 }) 
+}
+
+
+
 
 function checkWin() {
     const numberOfLetters = document.getElementsByClassName('letter').length;
-    if (numberOfLetters === 0) {
+    const numberOfShows = document.getElementsByClassName('show').length;
+    if (numberOfLetters === numberOfShows) {
         overlay.style.display = 'flex';
         overlay.className = 'win';
         document.querySelector('h2').textContent = 'you WIN!';
