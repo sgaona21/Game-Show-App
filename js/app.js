@@ -62,8 +62,34 @@ function checkLetter(guess) {
     return match;
 }
 
+qwertyKeyboard.addEventListener('click', () => {
+    const clickedButton = event.target;
+    clickedButton.className = 'chosen';
+    const letterFound = checkLetter(clickedButton.textContent);
+    console.log(letterFound);
 
-const testGuess = 'a';
-checkLetter(testGuess);
+    if (letterFound === null) {
+        missed = missed + 1; 
+        const firstHeart = document.querySelector('ol li:first-child');
+        firstHeart.remove();
+        console.log(missed);
+   }
+   checkWin();
+}) 
+
+function checkWin() {
+    const numberOfLetters = document.getElementsByClassName('letter').length;
+    if (numberOfLetters === 0) {
+        overlay.style.display = 'flex';
+        overlay.className = 'win';
+        document.querySelector('h2').textContent = 'you WIN!';
+        startGameButton.style.display = 'none';
+    } else if (missed === 5) {
+        overlay.style.display = 'flex';
+        overlay.className = 'lose';
+        document.querySelector('h2').textContent = 'You LOSE!';
+        startGameButton.style.display = 'none';
+    }
+}
 
 
