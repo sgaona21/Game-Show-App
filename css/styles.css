@@ -69,6 +69,11 @@ button {
   padding: 10px;
 }
 
+.btn__reset:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
 /* Title */
 
 .header {
@@ -160,4 +165,8 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+button:hover {
+  cursor: pointer;
 }
